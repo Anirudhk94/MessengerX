@@ -1,0 +1,11 @@
+<ion-view view-title="MessengerX">
+	<ion-content>
+	<div class="list" ng-repeat="friend in friends | orderBy:'firstname'">
+		    <a class="item item-avatar" href="#">
+		      <img src="img/{{friend.image}}.jpg">
+		      <h2>{{friend.firstname}} {{friend.lastname}}</h2>
+		      <p>{{friend.lastMsg}}</p>
+		    </a>
+		</div>
+	</ion-content>
+</ion-view>
