@@ -1,11 +1,17 @@
-<ion-view view-title="MessengerX">
-	<ion-content>
-	<div class="list" ng-repeat="friend in friends | orderBy:'firstname'">
-		    <a class="item item-avatar" href="#">
-		      <img src="img/{{friend.image}}.jpg">
-		      <h2>{{friend.firstname}} {{friend.lastname}}</h2>
-		      <p>{{friend.lastMsg}}</p>
-		    </a>
-		</div>
-	</ion-content>
+<ion-view view-title="Chats">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="friend in friends | orderBy:'firstname'" 
+      	type="item-text-wrap" href="#/chats/{{friend.id}}">
+        <img ng-src="img/{{friend.image}}.jpg">
+        <h2>{{friend.firstname}} {{friend.lastname}}</h2>
+        <p>{{friend.lastMsg}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-view>

@@ -30,11 +30,17 @@ app.config(function($stateProvider, $urlRouterProvider){
       url: '/home',
       templateUrl: 'templates/home.html',
       controller: 'homeController'
+    })
+
+    .state('chat-detail', {
+      url: '/chats/:friend_id',
+      templateUrl: 'templates/chat-details.html',
+      controller: 'chatController'
     });
   $urlRouterProvider.otherwise('/home')
 });
 
-app.controller('homeController', function($scope, $ionicSideMenuDelegate, $http){
+app.controller('homeController', function($scope, $http){
   console.log('In controller');
 
   var api = 'http://localhost:3000/';
@@ -43,4 +49,15 @@ app.controller('homeController', function($scope, $ionicSideMenuDelegate, $http)
     $scope.friends = data;
     console.log(data);
   });
+})
+
+app.controller('chatController', function($scope,$stateParams, $http){
+ 
+  var api = 'http://localhost:3000/friends/';
+
+  $http.get(api+ $stateParams.friend_id +'.json').success(function(data, status, headers, config){
+    $scope.friend = data;
+    console.log(data);
+  });
+
 });
