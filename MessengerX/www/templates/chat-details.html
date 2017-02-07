@@ -1,43 +1,22 @@
 <ion-header-bar class="bar-stable">
 	<a class="button icon-left ion-chevron-left button-clear button-dark"  href="#/home"></a>
-    <h1 class="title">Messenger-X</h1>
+    <h1 class="title">{{friend.firstname}} {{friend.lastname}}</h1>
 </ion-header-bar>
 
-<ion-view view-title="MessengerX" ng-controller="Messages">
-	<!-- <ion-content>
+<ion-view view-title="MessengerX">
+	<ion-content>
 		<div class="list">
-		    <a class="item item-avatar">
+		    <a class="item item-avatar" on-double-tap="onDoubleTap(friend.lastMsg)">
 		      <img src="img/{{friend.image}}.jpg">
-		      <h2>{{friend.firstname}} {{friend.lastname}}</h2>
-		      <p>{{friend.lastMsg}}</p>
+		      <h2>{{friend.lastMsg}}</h2>
+		      <p style="font-size:80%"><i>3:45 PM</i></p>
 		    </a>
 		</div>
-	</ion-content> -->
-
-	<ion-content class="content-stable"
-                 on-swipe-left="hideTime = false"
-                 on-swipe-right="hideTime = true">
-
-      <div ng-repeat="message in messages"
-           ng-class="{other: message.userId != myId}"
-           class="messages">
-
-        <div class="message" ng-class="{'slide-right': hideTime, '': !hideTime}">
-          
-          <span>{{ message.text }}</span>
-          <div class="time" ng-class="{'slide-left': hideTime, '': !hideTime}">{{message.time}}</div>
-
-        </div>
-
-        
-
-      </div>
-
-    </ion-content>
+	</ion-content>
 
 	<ion-footer-bar keyboard-attach class="bar-stable item-input-inset">
-      <label class="item-input-wrapper">
-        <input type="text" placeholder="Type your message" on-return="sendMessage(); closeKeyboard()" ng-model="data.message" on-focus="inputUp()" on-blur="inputDown()" />
+      <label class="item-input-wrapper" id="populate">
+        <input type="text" value="{{data}}"  placeholder="Type message here"/>
       </label>
       <button class="button button-clear" ng-click="sendMessage()">
         Send
