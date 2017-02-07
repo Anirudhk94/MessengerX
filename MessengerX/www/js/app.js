@@ -51,8 +51,11 @@ app.controller('homeController', function($scope, $http){
   });
 })
 
-app.controller('chatController', function($scope,$stateParams, $http){
+app.controller('chatController', function($scope,$stateParams, $http, $ionicHistory){
  
+  $scope.goBack = function(){
+    $ionicHistory.goBack();
+  }
   var api = 'http://localhost:3000/friends/';
 
   $http.get(api+ $stateParams.friend_id +'.json').success(function(data, status, headers, config){
