@@ -51,9 +51,9 @@ app.controller('homeController', function($scope, $http){
   });
 })
 
-app.controller('chatController', function($scope,$stateParams, $http, $ionicHistory){
+app.controller('chatController', function($scope,$stateParams, $http, $ionicHistory, $state){
  
-  $scope.goBack = function(){
+  $scope.goBack = function() {
     $ionicHistory.goBack();
     $scope.data = "";
   }
@@ -64,10 +64,24 @@ app.controller('chatController', function($scope,$stateParams, $http, $ionicHist
     console.log(data);
   });
 
+  var messages = [];
+
   $scope.onDoubleTap = function(message) {
     console.log(message);
-    $scope.data = message;
+    $scope.xxx = message;
   }
+
+  $scope.data = {};
+  $scope.messages = [];
+
+  $scope.sendMessage = function(data) {
+     $scope.messages.push({
+      text: data,
+    });
+    delete $scope.data.message;
+  };
+
+  delete $scope.data.message;
 
 });
 
