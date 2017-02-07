@@ -84,13 +84,6 @@ app.controller('chatController', function($scope,$stateParams, $http, $ionicHist
 
   delete $scope.data.message;
 
-  // $scope.sendMessage = function(message) {
-  //   $scope.data = "";
-  //   console.log(message);
-  //   messages.push(message);
-  //   console.log(messages);
-  // }
-
 });
 
 
