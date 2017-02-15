@@ -1,5 +1,5 @@
 # MessengerX
-[Demo] Building a new feature for chat rooms.  
+Building a new feature for chat rooms.  
 
 This project is built to demo a new gesture, i.e, "onDoubleTap" to forward a message in the current chat window without any hassle.
 
